@@ -2,17 +2,18 @@
 <html lang="en">
   <%- include('partials/head', { css }) %>
   <body>
-    <h1><%= text %></h1>
-    <hr />
-    <h2>Users:</h2>
+    <h1>Users:</h1>
     <ul>
-      <% messages.map(message => { %>
+      <% messages.map((message, index) => { %>
       <li>
         <p>User: <%= message.user%></p>
         <p>Message: <%= message.text%></p>
         <p>Added on <%= message.added%></p>
       </li>
+      <a href="/message/<%= index%>">View message</a>
+      <hr />
       <% }) %>
     </ul>
+    <a href="/new">Add message</a>
   </body>
 </html>

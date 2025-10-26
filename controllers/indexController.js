@@ -3,25 +3,38 @@ const messages = [
   { text: "Hello World!", user: "Charles", added: new Date() },
 ];
 
-function indexController(req, res, next) {
-  try {
-    res.render("index", {
-      title: "Mini message board",
-      css: "index.css",
-      text: "This is Index page",
-      messages,
-    });
-  } catch (error) {
-    next(error);
-  }
+function indexController(req, res) {
+  res.render("index", {
+    title: "Mini message board",
+    css: "index.css",
+    text: "This is Index page",
+    messages,
+  });
 }
 
 function newController(req, res) {
-  // Get the value of authorName input and messageText input
-  const { authorName, messageText } = req.body;
-  // Push/Add it to messages
-  messages.push({ text: messageText, user: authorName, added: new Date() });
-  res.render("form", { css: "form.css" });
+  res.render("form", { title: "Form", css: "form.css" });
 }
 
-module.exports = { indexController, newController };
+function viewMessageController(req, res, next) {
+  const { messageId } = req.params;
+  const message = messages[messageId];
+
+  if (!message) {
+    console.log(messageId);
+    return next(new Error("Message not found"));
+  }
+
+  res.render("message", {
+    title: "Message",
+    css: "message.css",
+    message,
+  });
+}
+
+module.exports = {
+  indexController,
+  newController,
+  viewMessageController,
+  messages,
+};
