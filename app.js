@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middlewares
 app.use("/", indexRouter);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Initiating Mini message board app");
 });
