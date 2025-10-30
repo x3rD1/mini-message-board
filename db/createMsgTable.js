@@ -6,11 +6,11 @@ const SQL = `
     CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         message TEXT,
-        user TEXT,
+        username TEXT,
         added TIMESTAMP DEFAULT Now()
     );
     
-    INSERT INTO messages (message, user)
+    INSERT INTO messages (message, username)
     VALUES ('Hello World!', 'Snowfxl');
 `;
 
