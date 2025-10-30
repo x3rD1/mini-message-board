@@ -1,8 +1,8 @@
-const { messages } = require("./indexController");
+const db = require("../db/queries");
 
-function formController(req, res) {
-  const { authorName, messageText } = req.body;
-  messages.push({ text: messageText, user: authorName, added: new Date() });
+async function formController(req, res) {
+  const { username, message } = req.body;
+  await db.createNewMessage(username, message);
   res.redirect("/");
 }
 
