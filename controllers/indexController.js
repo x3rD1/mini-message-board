@@ -1,9 +1,7 @@
-const messages = [
-  { text: "Hi there!", user: "Amando", added: new Date() },
-  { text: "Hello World!", user: "Charles", added: new Date() },
-];
+const db = require("../db/queries");
 
-function indexController(req, res) {
+async function indexController(req, res) {
+  const messages = await db.getAllMessages();
   res.render("index", {
     title: "Mini message board",
     css: "index.css",
@@ -36,5 +34,4 @@ module.exports = {
   indexController,
   newController,
   viewMessageController,
-  messages,
 };
