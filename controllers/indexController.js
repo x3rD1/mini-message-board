@@ -2,6 +2,7 @@ const db = require("../db/queries");
 
 async function indexController(req, res) {
   const messages = await db.getAllMessages();
+  console.log(messages);
   res.render("index", {
     title: "Mini message board",
     css: "index.css",
