@@ -12,4 +12,11 @@ async function createNewMessage(username, message) {
   ]);
 }
 
-module.exports = { getAllMessages, createNewMessage };
+async function viewMessage(id) {
+  const { rows } = await pool.query(
+    "SELECT message FROM messages WHERE id = $1",
+    [id]
+  );
+  return rows;
+}
+module.exports = { getAllMessages, createNewMessage, viewMessage };
