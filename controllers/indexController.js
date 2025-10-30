@@ -2,7 +2,6 @@ const db = require("../db/queries");
 
 async function indexController(req, res) {
   const messages = await db.getAllMessages();
-  console.log(messages);
   res.render("index", {
     title: "Mini message board",
     css: "index.css",
@@ -15,10 +14,10 @@ function newController(req, res) {
   res.render("form", { title: "Form", css: "form.css" });
 }
 
-function viewMessageController(req, res, next) {
+async function viewMessageController(req, res, next) {
   const { messageId } = req.params;
-  const message = messages[messageId];
-
+  const message = await db.viewMessage(messageId);
+  console.log(message);
   if (!message) {
     console.log(messageId);
     return next(new Error("Message not found"));
