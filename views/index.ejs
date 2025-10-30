@@ -6,8 +6,8 @@
     <ul>
       <% messages.map((message, index) => { %>
       <li>
-        <p>User: <%= message.user%></p>
-        <p>Message: <%= message.text%></p>
+        <p>User: <%= message.username%></p>
+        <p>Message: <%= message.message%></p>
         <p>Added on <%= message.added%></p>
       </li>
       <a href="/message/<%= index%>">View message</a>
