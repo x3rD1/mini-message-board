@@ -3,6 +3,8 @@
   <%- include('partials/head', { title, css }) %>
   <body>
     <h1>Message:</h1>
-    <p><%= message.text %></p>
+    <% message.map(msg => { %>
+    <p><%= msg.message %></p>
+    <% }) %>
   </body>
 </html>
