@@ -7,15 +7,27 @@
       <div class="authorName">
         <label for="name">
           Author's Name:
-          <input type="text" id="name" name="username" />
+          <input
+            type="text"
+            id="name"
+            name="username"
+            value="<%= old && old.username ? old.username : '' %>"
+          />
         </label>
+        <span style="color: red"><%= errors?.username?.msg || '' %></span>
       </div>
 
       <div class="authorMessage">
         <label for="message">
           Message:
-          <input type="text" id="message" name="message" />
+          <input
+            type="text"
+            id="message"
+            name="message"
+            value="<%= old && old.message ? old.message : '' %>"
+          />
         </label>
+        <span style="color: red"><%= errors?.message?.msg || '' %></span>
       </div>
       <button type="submit">Submit</button>
     </form>

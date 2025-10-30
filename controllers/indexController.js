@@ -11,13 +11,18 @@ async function indexController(req, res) {
 }
 
 function newController(req, res) {
-  res.render("form", { title: "Form", css: "form.css" });
+  res.render("form", {
+    title: "Form",
+    css: "form.css",
+    errors: [],
+    old: {},
+  });
 }
 
 async function viewMessageController(req, res, next) {
   const { messageId } = req.params;
   const message = await db.viewMessage(messageId);
-  console.log(message);
+
   if (!message) {
     console.log(messageId);
     return next(new Error("Message not found"));

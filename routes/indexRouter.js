@@ -1,5 +1,6 @@
 const express = require("express");
 const indexRouter = express.Router();
+const { validateMessage } = require("../validators/messageValidator");
 
 const {
   indexController,
@@ -13,5 +14,5 @@ indexRouter.get("/", indexController);
 indexRouter.get("/message/:messageId", viewMessageController);
 indexRouter.get("/new", newController);
 // POST methods
-indexRouter.post("/new", formController);
+indexRouter.post("/new", validateMessage, formController);
 module.exports = indexRouter;
