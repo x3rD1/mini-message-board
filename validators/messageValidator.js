@@ -5,7 +5,7 @@ const validateMessage = [
     .trim()
     .notEmpty()
     .withMessage("Name is required.")
-    .isAlpha()
+    .isAlpha("en-US", { ignore: " " })
     .withMessage("Name must only contain letters.")
     .isLength({ min: 3, max: 12 })
     .withMessage("Name must be between 3 and 12 characters."),
